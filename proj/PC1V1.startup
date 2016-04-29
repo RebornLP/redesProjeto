@@ -1,0 +1,11 @@
+
+#echo "
+#auto eth0
+#iface eth0 inet dhcp 
+#" >> /etc/network/interfaces
+
+
+#Restart necessario?
+/etc/init.d/networking restart 
+#reboot
+ 

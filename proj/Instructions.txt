@@ -1,0 +1,16 @@
+Instructions:
+
+TO RUN clean.sh you need to:
+chmod +x clean.sh
+
+Command - Explanation
+
+
+SCRIPT FILES : 
+./clean.sh - Removes *.disk and *.*~ (files created from gedit)
+./delTilFiles.sh - Removes *.*~
+./delDiskFiles.sh - Removes *.disk
+./folderCreate.sh - Creates folder with the name of * file
+
+. labRun - Crashes existing lab, starts lab and adds an ip route to pc (needs sudo)
+. mrtgCheck - Opens mrtg in web Browser

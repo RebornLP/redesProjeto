@@ -1,1 +1,2 @@
-# GSRedes
+Projeto de Redes - Grupo20
+

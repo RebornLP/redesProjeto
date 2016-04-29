@@ -1,0 +1,19 @@
+$TTL    60000
+@               IN      SOA     S6Ex.ttt. 
+root.S6Ex.ttt. 		(
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+@               IN      NS      S6Ex.ttt.
+S6Ex            IN      A       10.0.0.6
+
+autocar			IN 	NS	S1PE.autocar.ttt.
+S1PE.autocar.ttt.	IN	A	10.0.0.130
+
+autocar			IN 	NS	S1PH.autocar.ttt.
+S1PH.autocar.ttt.	IN	A	10.0.0.131
+
+leilei		IN	NS	S6Ex.ttt.

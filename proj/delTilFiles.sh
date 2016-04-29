@@ -1,0 +1,3 @@
+#Delete .disk 
+rm *.*~
+rm *~

@@ -1,0 +1,60 @@
+ip addr add dev eth0 10.0.0.145/30 
+ip link set dev eth0 up
+ip addr add dev eth1 10.0.0.157/30
+ip link set dev eth1 up
+ip addr add dev eth2 10.0.0.129/29
+ip link set dev eth2 up
+ip addr add dev eth3 192.168.0.25/29
+ip link set dev eth3 up
+ip addr add dev eth4 10.0.0.137/29
+ip link set dev eth4 up
+ip addr add dev eth5 10.0.0.225/27
+ip link set dev eth5 up
+ip addr add dev eth6 192.168.1.1/24
+ip link set dev eth6 up
+ip addr add dev eth7 10.0.0.1/30
+ip link set dev eth7 up
+
+#Add S6Ex
+ip route add 10.0.0.4/30 via 10.0.0.2
+
+#Add pc
+ip route add 0.0.0.0/0 via 192.168.1.2
+
+
+#echo "
+#subnet 10.0.0.224 netmask 255.255.255.224 {
+#	range 10.0.0.226 10.0.0.254;
+#	option routers 10.0.0.161;
+#}
+
+#subnet 10.0.0.136 netmask 255.255.255.248 {
+#	range 10.0.0.138 10.0.0.142;
+#	option routers 10.0.0.137;
+#}
+
+#" >> /etc/dhcp3/dhcpd.conf
+
+/etc/init.d/dhcp3-server start
+
+#echo "
+#redistribute connected
+##network 192.168.0.24/29
+##network 10.0.0.128/29
+##network 10.0.0.136/29
+##network 10.0.0.224/27
+
+#network 10.0.0.0/30
+#network 10.0.0.144/30
+#network 10.0.0.156/30
+#network 192.168.1.0/24
+
+#network 192.168.0.24/29
+
+#" >> /etc/zebra/ripd.conf
+
+#sed -i 's/ripd=no/ripd=yes/' /etc/zebra/daemons
+
+/etc/init.d/zebra start
+/etc/init.d/apache2 start
+/etc/init.d/snmpd start
