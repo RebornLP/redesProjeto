@@ -1,0 +1,19 @@
+$TTL    60000
+@               IN      SOA     dns.ttt. root.dns.ttt. 		(
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+@               IN      NS      dns.ttt.
+dns            IN      A       10.0.0.6
+
+autocar			IN 	NS	dns1.autocar.ttt.
+dns1.autocar.ttt.	IN	A	10.0.0.130
+
+autocar			IN 	NS	dns2.autocar.ttt.
+dns2.autocar.ttt.	IN	A	10.0.0.131
+
+leilei		IN	NS	dns.ttt.
+dns.leilei	IN 	A	10.0.0.6

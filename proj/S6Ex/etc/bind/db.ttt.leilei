@@ -1,0 +1,14 @@
+$TTL    60000
+@               IN      SOA     dns.leilei.ttt. 
+root.dns.leilei.ttt	(
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+@               IN      NS      dns.leilei.ttt.
+dns            	IN      A       10.0.0.6
+
+@		IN	A		10.0.0.6
+www		IN	CNAME 	leilei.ttt.

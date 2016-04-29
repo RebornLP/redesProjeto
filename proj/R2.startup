@@ -1,0 +1,40 @@
+ip addr add dev eth0 10.0.0.146/30
+ip link set dev eth0 up
+ip addr add dev eth1 10.0.0.149/30
+ip link set dev eth1 up
+ip addr add dev eth2 192.168.0.1/29 
+ip link set dev eth2 up
+ip addr add dev eth3 10.0.0.161/28
+ip link set dev eth3 up
+
+#echo "
+#subnet 10.0.0.160 netmask 255.255.255.240 {
+#	range 10.0.0.162 10.0.0.174;
+#	option routers 10.0.0.161;
+#}
+#
+#subnet 192.168.0.0 netmask 255.255.255.248 {
+#	range 192.168.0.2 192.168.0.6;
+#	option routers 192.168.0.1;
+#}
+#
+#" >> /etc/dhcp3/dhcpd.conf
+
+/etc/init.d/dhcp3-server start
+
+
+##echo " 
+#redistribute connected
+#network 10.0.0.144/30
+#network 10.0.0.148/30
+
+#network 10.0.0.160/28
+#network 192.168.0.0/29
+
+#" >> /etc/zebra/ripd.conf
+
+#sed -i 's/ripd=no/ripd=yes/' /etc/zebra/daemons
+
+/etc/init.d/zebra start
+/etc/init.d/apache2 start
+/etc/init.d/snmpd start
