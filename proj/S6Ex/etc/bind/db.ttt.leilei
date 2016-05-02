@@ -1,18 +1,14 @@
 $TTL    60000
-@               IN      SOA     S6Ex.leilei.ttt. 
-root.S6Ex.leilei.ttt	(
+@               IN      SOA     dns.leilei.ttt. 
+root.dns.leilei.ttt	(
                         2006031201 ; serial
                         28 ; refresh
                         14 ; retry
                         3600000 ; expire
                         0 ; negative cache ttl
                         )
-@               IN      NS      S6Ex.leilei.ttt.
-@		IN 	MX 5	mail.leilei.ttt.
+@               IN      NS      dns.leilei.ttt.
+dns            	IN      A       10.0.0.6
 
-S6Ex            IN      A       10.0.0.6
-
-imap		IN	A	10.0.0.6
-pop		IN	A	10.0.0.6
-mail		IN	A	10.0.0.6
-
+@		IN	A		10.0.0.6
+www		IN	CNAME 	leilei.ttt.
