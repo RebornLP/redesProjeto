@@ -4,14 +4,15 @@ ip link set dev eth0 up
 ip route add 10.0.0.0/28 via 10.0.0.5
 ip route add default via 10.0.0.5
 
+useradd -m redeexterna
+echo redeexterna:redeexterna | chpasswd
+
 # Change permissions of the mail spool directory, so that the guest user is
 # allowed to write lock files.
 chmod a+w /var/spool/mail
 # Change permissions of the exim4 configuration file, to avoid errors due to
 # loose permissions
 chmod go-rw /etc/exim4/exim4.conf
-
-
 
 
 /etc/init.d/bind start

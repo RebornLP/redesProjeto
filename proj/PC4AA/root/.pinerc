@@ -13,7 +13,7 @@
 # Lines beginning with "#" are comments, and ignored by Pine.
 
 # Over-rides your full name from Unix password file. Required for PC-Pine.
-personal-name=PC4Armazem
+personal-name=Armazem4_Coimbra
 
 # Sets domain part of From: and local addresses in outgoing mail.
 user-domain=lugroma3.org
@@ -26,7 +26,7 @@ nntp-server=
 
 # Path of (local or remote) INBOX, e.g. ={mail.somewhere.edu}inbox
 # Normal Unix default is the local INBOX (usually /usr/spool/mail/$USER).
-inbox-path={imap.autocar.ttt/user=guest}inbox
+inbox-path={imap.autocar.ttt/user=armazem4}inbox
 
 # List of folder pairs; the first indicates a folder to archive, and the
 # second indicates the folder read messages in the first should
