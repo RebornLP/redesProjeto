@@ -1,5 +1,5 @@
 $TTL    60000
-autocar.ttt.       IN  SOA     dns1.autocar.ttt. root.S1PE.autocar.ttt.	(
+@       IN  SOA     dns1.autocar.ttt. root.S1PE.autocar.ttt.	(
                         2006031201 ; serial
                         28 ; refresh
                         14 ; retry
@@ -13,7 +13,9 @@ dns1       	IN		A   	10.0.0.130
 
 @			IN 		NS		dns2.autocar.ttt.
 dns2		IN		A		10.0.0.131
+
 @ 			IN 		A 		10.0.0.130
+@ 			IN 		A 		10.0.0.131
 
 imap		IN		A		10.0.0.130
 pop			IN		A		10.0.0.130
