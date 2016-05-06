@@ -3,10 +3,12 @@ ip link set dev eth0 up
 ip route add default via 10.0.0.129
 
 
-/etc/init.d/bind start
-/etc/init.d/snmpd start
 
 #http
 a2ensite autocar.ttt.conf
 a2ensite intranet.autocar.ttt.conf
+
+/etc/init.d/bind start
+/etc/init.d/snmpd start
+
 /etc/init.d/apache2 start
