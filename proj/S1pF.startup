@@ -2,5 +2,10 @@ ip addr add dev eth0 192.168.0.26/29
 ip link set dev eth0 up
 ip route add default via 192.168.0.25
 
+useradd -m files
+adduser files sudo
+echo files:files | chpasswd
+
 /etc/init.d/snmpd start
+/etc/init.d/ssh start
 proftpd

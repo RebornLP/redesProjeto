@@ -1,0 +1,20 @@
+ip addr add dev eth0 10.0.0.10/30
+ip link set dev eth0 up
+
+#Add all routes from R6
+ip route add 10.0.0.128/25 via 10.0.0.1
+
+#Add route to R1
+ip route add 10.0.0.0/30 via 10.0.0.9
+
+#Add default route
+ip route add default via 10.0.0.9
+
+
+#Add User
+useradd -m AdminExterno
+adduser AdminExterno sudo
+#echo AdminExterno:adminexterno | chpasswd
+
+
+/etc/init.d/ssh start
