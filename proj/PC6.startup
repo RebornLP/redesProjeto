@@ -16,5 +16,16 @@ useradd -m AdminExterno
 adduser AdminExterno sudo
 #echo AdminExterno:adminexterno | chpasswd
 
-
 /etc/init.d/ssh start
+
+
+
+chown AdminExterno:AdminExterno /home/AdminExterno
+chown AdminExterno:AdminExterno /home/AdminExterno/.ssh
+chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/id_rsa
+
+
+chmod 770 /home/AdminExterno
+chmod 700 /home/AdminExterno/.ssh
+chmod 600 /home/AdminExterno/.ssh/*
+

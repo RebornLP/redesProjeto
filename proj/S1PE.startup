@@ -2,7 +2,7 @@ ip addr add dev eth0 10.0.0.130/29
 ip link set dev eth0 up
 ip route add default via 10.0.0.129
 
-useradd -m email
+useradd email
 echo email:email | chpasswd
 
 
@@ -37,3 +37,11 @@ chmod go-rw /etc/exim4/exim4.conf
 /etc/init.d/exim4 start
 /etc/init.d/inetd start
 /etc/init.d/ssh start
+
+chown email:email /home/email
+chown email:email /home/email/.ssh
+chown email:email /home/email/.ssh/*
+
+chmod go-rwx /home/email
+chmod 700 /home/email/.ssh
+chmod 600 /home/email/.ssh/*

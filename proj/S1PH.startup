@@ -2,7 +2,7 @@ ip addr add dev eth0 10.0.0.131/29
 ip link set dev eth0 up
 ip route add default via 10.0.0.129
 
-useradd -m http
+useradd http
 echo http:http | chpasswd
 
 
@@ -14,3 +14,11 @@ a2ensite intranet.autocar.ttt.conf
 /etc/init.d/snmpd start
 /etc/init.d/ssh start
 /etc/init.d/apache2 start
+
+chown http:http /home/http
+chown http:http /home/http/.ssh
+chown http:http /home/http/.ssh/*
+
+chmod go-rwx /home/http
+chmod 700 /home/http/.ssh
+chmod 600 /home/http/.ssh/*
