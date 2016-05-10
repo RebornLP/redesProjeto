@@ -3,7 +3,6 @@ ip link set dev eth0 up
 ip route add default via 10.0.0.129
 
 useradd -m email
-adduser email sudo
 echo email:email | chpasswd
 
 
