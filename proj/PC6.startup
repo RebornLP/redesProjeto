@@ -18,11 +18,13 @@ adduser AdminExterno sudo
 
 /etc/init.d/ssh start
 
-
+#ssh -L 8080:email/mrtg@10.0.0.130/131:22 files/mrtg@192.168.0.26/27
+#
 
 chown AdminExterno:AdminExterno /home/AdminExterno
 chown AdminExterno:AdminExterno /home/AdminExterno/.ssh
 chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/id_rsa
+chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/known_hosts
 
 
 chmod 770 /home/AdminExterno

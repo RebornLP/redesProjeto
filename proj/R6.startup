@@ -13,10 +13,10 @@ ip route add default via 10.0.0.1
 ip route add 10.0.0.0/30 via 10.0.0.1
 
 #Add S6Ex
-ip route add 10.0.0.4/30 via 10.0.0.1
+ip route add 10.0.0.4/30 via 10.0.0.5
 
 #Add PC6
-ip route add 10.0.0.8/30 via 10.0.0.1
+ip route add 10.0.0.8/30 via 10.0.0.9
 
 /etc/init.d/apache2 start
 /etc/init.d/snmpd start
