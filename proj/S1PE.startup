@@ -42,6 +42,18 @@ chown email:email /home/email
 chown email:email /home/email/.ssh
 chown email:email /home/email/.ssh/*
 
+###############User permissions
 chmod go-rwx /home/email
 chmod 700 /home/email/.ssh
 chmod 600 /home/email/.ssh/*
+
+############root permissions
+chmod go-rwx /root
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/*
+
+#ssh -f -L 000:files@192.168.0.26:3001 -N
+#ssh -f -L 3002:mrtg@192.168.0.27:3003 -N
+
+ssh -f files@192.168.0.26 -N
+ssh -f mrtg@192.168.0.27 -N
