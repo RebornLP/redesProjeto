@@ -13,20 +13,20 @@
 # Lines beginning with "#" are comments, and ignored by Pine.
 
 # Over-rides your full name from Unix password file. Required for PC-Pine.
-personal-name=geral
+personal-name=Armazem2_Lisboa
 
 # Sets domain part of From: and local addresses in outgoing mail.
-user-domain=leilei.ttt
+user-domain=autocar.ttt
 
 # List of SMTP servers for sending mail. If blank: Unix Pine uses sendmail.
-smtp-server=
+smtp-server=mail.autocar.ttt
 
 # NNTP server for posting news. Also sets news-collections for news reading.
 nntp-server=
 
 # Path of (local or remote) INBOX, e.g. ={mail.somewhere.edu}inbox
 # Normal Unix default is the local INBOX (usually /usr/spool/mail/$USER).
-inbox-path=
+inbox-path={imap.autocar.ttt/user=armazem2}inbox
 
 # List of folder pairs; the first indicates a folder to archive, and the
 # second indicates the folder read messages in the first should
@@ -77,7 +77,7 @@ initial-keystroke-list=
 default-composer-hdrs=
 
 # Add these customized headers (and possible default values) when composing
-customized-hdrs=
+customized-hdrs=Reply-To: guest@autocar.ttt
 
 # When viewing messages, include this list of headers
 viewer-hdrs=
@@ -313,7 +313,7 @@ address-book=
 global-address-book=
 
 # Set by Pine; controls beginning-of-month sent-mail pruning.
-last-time-prune-questioned=116.4
+last-time-prune-questioned=400.1
 
 # Set by Pine; controls display of "new version" message.
 last-version-used=4.64
