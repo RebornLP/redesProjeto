@@ -15,6 +15,10 @@ ip link set dev eth6 up
 ip addr add dev eth7 10.0.0.1/30
 ip link set dev eth7 up
 
+#gives access to the internet
+iptables -t nat -A POSTROUTING -s 192.168.0.48/29 -j MASQUERADE
+
+
 #Add S6Ex
 ip route add 10.0.0.4/30 via 10.0.0.2
 

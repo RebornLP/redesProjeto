@@ -7,6 +7,8 @@ ip link set dev eth2 up
 ip addr add dev eth3 10.0.0.193/27
 ip link set dev eth3 up
 
+#gives access to the internet
+iptables -t nat -A POSTROUTING -s 192.168.0.32/29 -j MASQUERADE
 
 #echo "
 #subnet 10.0.0.192 netmask 255.255.255.224 {
