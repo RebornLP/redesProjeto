@@ -2,18 +2,21 @@ ip addr add dev eth0 10.0.0.2/30
 ip link set dev eth0 up
 ip addr add dev eth1 10.0.0.5/30
 ip link set dev eth1 up
+ip addr add dev eth2 10.0.0.9/30
+ip link set dev eth2 up
 
-#Add S6Ex
-ip route add 10.0.0.0/28 via 10.0.0.1
+#Add AllRoutes
+ip route add 10.0.0.128/25 via 10.0.0.1
 ip route add default via 10.0.0.1
 
-#echo "
-#redistribute connected
-#network 10.0.0.0/30
-#network 10.0.0.4/30
+#Add R1Route
+ip route add 10.0.0.0/30 via 10.0.0.1
 
-#" >> /etc/zebra/ripd.conf
+#Add S6Ex
+ip route add 10.0.0.4/30 via 10.0.0.5
 
-#/etc/init.d/zebra start
+#Add PC6
+ip route add 10.0.0.8/30 via 10.0.0.9
+
 /etc/init.d/apache2 start
 /etc/init.d/snmpd start

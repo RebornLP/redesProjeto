@@ -1,12 +1,33 @@
-ip addr add dev eth0 10.0.0.131/30 
+ip addr add dev eth0 10.0.0.131/29
 ip link set dev eth0 up
 ip route add default via 10.0.0.129
 
+useradd http
+echo http:http | chpasswd
 
-/etc/init.d/bind start
-/etc/init.d/snmpd start
 
 #http
 a2ensite autocar.ttt.conf
 a2ensite intranet.autocar.ttt.conf
+
+/etc/init.d/bind start
+/etc/init.d/snmpd start
+/etc/init.d/ssh start
 /etc/init.d/apache2 start
+
+chown http:http /home/http
+chown http:http /home/http/.ssh
+chown http:http /home/http/.ssh/*
+############User permissions
+chmod go-rwx /home/http
+chmod 700 /home/http/.ssh
+chmod 600 /home/http/.ssh/*
+
+############root permissions
+chmod go-rwx /root
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/*
+
+
+#ssh -f -L 3000:files@192.168.0.26:3001 -N
+#ssh -f -L 3002:mrtg@192.168.0.27:3003 -N

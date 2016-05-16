@@ -1,0 +1,33 @@
+ip addr add dev eth0 10.0.0.10/30
+ip link set dev eth0 up
+
+#Add all routes from R6
+ip route add 10.0.0.128/25 via 10.0.0.1
+
+#Add route to R1
+ip route add 10.0.0.0/30 via 10.0.0.9
+
+#Add default route
+ip route add default via 10.0.0.9
+
+
+#Add User
+useradd -m AdminExterno
+adduser AdminExterno sudo
+#echo AdminExterno:adminexterno | chpasswd
+
+/etc/init.d/ssh start
+
+#ssh -L 8080:email/mrtg@10.0.0.130/131:22 files/mrtg@192.168.0.26/27
+#
+
+chown AdminExterno:AdminExterno /home/AdminExterno
+chown AdminExterno:AdminExterno /home/AdminExterno/.ssh
+chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/id_rsa
+chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/known_hosts
+
+
+chmod 770 /home/AdminExterno
+chmod 700 /home/AdminExterno/.ssh
+chmod 600 /home/AdminExterno/.ssh/*
+
