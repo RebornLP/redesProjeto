@@ -11,6 +11,7 @@ ip link set dev eth4 up
 ip addr add dev eth5 10.0.0.225/27
 ip link set dev eth5 up
 ip addr add dev eth6 192.168.1.1/24
+iptables -t nat -A POSTROUTING -o eth6 -j MASQUERADE
 ip link set dev eth6 up
 ip addr add dev eth7 10.0.0.1/30
 ip link set dev eth7 up
