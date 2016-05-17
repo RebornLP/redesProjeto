@@ -5,10 +5,13 @@ ip route add default via 10.0.0.129
 useradd http
 echo http:http | chpasswd
 
+#https
+a2enmod ssl
 
 #http
 a2ensite autocar.ttt.conf
 a2ensite intranet.autocar.ttt.conf
+
 
 /etc/init.d/bind start
 /etc/init.d/snmpd start
@@ -28,6 +31,6 @@ chmod go-rwx /root
 chmod 700 /root/.ssh
 chmod 600 /root/.ssh/*
 
-
 #ssh -f -L 3000:files@192.168.0.26:3001 -N
 #ssh -f -L 3002:mrtg@192.168.0.27:3003 -N
+
