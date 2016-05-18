@@ -11,15 +11,17 @@ ip route add 10.0.0.0/30 via 10.0.0.9
 ip route add default via 10.0.0.9
 
 
+
 #Add User
-useradd -m AdminExterno
+useradd AdminExterno
 adduser AdminExterno sudo
-#echo AdminExterno:adminexterno | chpasswd
+echo AdminExterno:adminexterno | chpasswd
+
+adduser guest sudo
+echo guest:guest | chpasswd
 
 /etc/init.d/ssh start
-
-#ssh -L 8080:email/mrtg@10.0.0.130/131:22 files/mrtg@192.168.0.26/27
-#
+#ssh -L 8080:email/http@10.0.0.130/131:22 files/mrtg@192.168.0.26/27
 
 chown AdminExterno:AdminExterno /home/AdminExterno
 chown AdminExterno:AdminExterno /home/AdminExterno/.ssh
@@ -27,7 +29,20 @@ chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/id_rsa
 chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/known_hosts
 
 
+#VPN Permissions
+chmod 400 /etc/openvpn/*
+
+
+## SSH permissions
 chmod 770 /home/AdminExterno
 chmod 700 /home/AdminExterno/.ssh
 chmod 600 /home/AdminExterno/.ssh/*
 
+chmod +x /etc/openvpn/update-resolv-conf.sh
+
+#install openresolv
+dpkg -i --force-all openresolv_3.5.2-1_all.deb
+
+##
+# openvpn client.conf &
+# ip route
