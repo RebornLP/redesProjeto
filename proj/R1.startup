@@ -37,6 +37,12 @@ ip route add 0.0.0.0/0 via 192.168.1.2
 /etc/init.d/apache2 start
 /etc/init.d/snmpd start
 
+# accept privous connections
+iptables -A FORWARD -i eth6 -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -i eth7 -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+
+
 # allows HTTP (80)
 iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.131 --dport 80 -j ACCEPT
 iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.131 --dport 80 -j ACCEPT
