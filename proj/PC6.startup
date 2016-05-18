@@ -1,6 +1,9 @@
 ip addr add dev eth0 10.0.0.10/30
 ip link set dev eth0 up
 
+#install openresolv
+dpkg -i openresolv_3_5_2_1_all.deb
+
 #Add all routes from R6
 ip route add 10.0.0.128/25 via 10.0.0.1
 
@@ -16,15 +19,14 @@ useradd AdminExterno
 adduser AdminExterno sudo
 echo AdminExterno:adminexterno | chpasswd
 
-useradd guest
 adduser guest sudo
 echo guest:guest | chpasswd
 
 
-/etc/init.d/ssh start
 
+/etc/init.d/ssh start
 #ssh -L 8080:email/http@10.0.0.130/131:22 files/mrtg@192.168.0.26/27
-#
+
 
 chown AdminExterno:AdminExterno /home/AdminExterno
 chown AdminExterno:AdminExterno /home/AdminExterno/.ssh
@@ -33,15 +35,6 @@ chown AdminExterno:AdminExterno /home/AdminExterno/.ssh/known_hosts
 
 
 #VPN Permissions
-chown guest:guest /etc/openvpn/*
-chown guest:guest /home/guest
-chown guest:guest /home/guest/*
-chmod 770 /home/guest
-chmod 400 /home/guest/guest.crt
-chmod 400 /home/guest/guest.key
-chmod 400 /home/guest/ca.crt
-chmod 640 /etc/guest/client.conf
-
 chmod 400 /etc/openvpn/*
 chmod 640 /etc/openvpn/client.conf
 
@@ -51,8 +44,8 @@ chmod 770 /home/AdminExterno
 chmod 700 /home/AdminExterno/.ssh
 chmod 600 /home/AdminExterno/.ssh/*
 
+chmod +x /etc/openvpn/update-resolv-conf.sh
 
 ##
-# cd /home/guest
 # openvpn client.conf &
 # ip route
