@@ -11,10 +11,14 @@ ip link set dev eth4 up
 ip addr add dev eth5 10.0.0.225/27
 ip link set dev eth5 up
 ip addr add dev eth6 192.168.1.1/24
-iptables -t nat -A POSTROUTING -o eth6 -j MASQUERADE
 ip link set dev eth6 up
+# allows NAT
+iptables -t nat -A POSTROUTING -o eth6 -j MASQUERADE
+
 ip addr add dev eth7 10.0.0.1/30
 ip link set dev eth7 up
+# allows Internet
+iptables -t nat -A POSTROUTING -o eth7 -j MASQUERADE
 
 
 #Add S6Ex
@@ -29,20 +33,61 @@ ip route add 0.0.0.0/0 via 192.168.1.2
 
 
 /etc/init.d/dhcp3-server start
-
-
 /etc/init.d/zebra start
 /etc/init.d/apache2 start
 /etc/init.d/snmpd start
 
+# allows HTTP (80)
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.131 --dport 80 -j ACCEPT
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.131 --dport 80 -j ACCEPT
 
-iptables -A FORWARD -d 192.168.0.0/16 -p tcp --dport ssh -j DROP
-iptables -A FORWARD -d 192.168.0.0/16 -p http --dport ssh -j DROP
+# allows HTTPS (443)
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.131 --dport 443 -j ACCEPT
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.131 --dport 443 -j ACCEPT
 
-iptables -A FORWARD -d 10.0.0.0/30 -p tcp --dport ssh -j DROP
-iptables -A FORWARD -d 10.0.0.0/30 -p http --dport ssh -j DROP
+#allows SMTP (25)
+iptables -A FORWARD -i eth6 -p udp -d 10.0.0.130 --dport 25 -j ACCEPT
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.130 --dport 25 -j ACCEPT
+iptables -A FORWARD -i eth7 -p udp -d 10.0.0.130 --dport 25 -j ACCEPT
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.130 --dport 25 -j ACCEPT
 
-#iptables -A FORWARD -i eth0 -o eth2 -j DROP
+#allows IMAP (143) 
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.130 --dport 143 -j ACCEPT
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.130 --dport 143 -j ACCEPT
+
+#allows DNS, by TCP or UDP(53)
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.130 --dport 53 -j ACCEPT
+iptables -A FORWARD -i eth6 -p udp -d 10.0.0.130 --dport 53 -j ACCEPT
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.131 --dport 53 -j ACCEPT
+iptables -A FORWARD -i eth6 -p udp -d 10.0.0.131 --dport 53 -j ACCEPT
+
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.130 --dport 53 -j ACCEPT
+iptables -A FORWARD -i eth7 -p udp -d 10.0.0.130 --dport 53 -j ACCEPT
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.131 --dport 53 -j ACCEPT
+iptables -A FORWARD -i eth7 -p udp -d 10.0.0.131 --dport 53 -j ACCEPT
+
+#allows SSH, by TCP(22)
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.130 --dport 22 -j ACCEPT
+iptables -A FORWARD -i eth6 -p tcp -d 10.0.0.131 --dport 22 -j ACCEPT
+
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.130 --dport 22 -j ACCEPT
+iptables -A FORWARD -i eth7 -p tcp -d 10.0.0.131 --dport 22 -j ACCEPT
+
+
+#allows VPN, by TCP or UDP !!!!!!!!NOT SURE
+iptables -A FORWARD -i eth6 -m state --state NEW -p tcp -d 10.0.0.131 --dport 1194 -j ACCEPT
+iptables -A FORWARD -i eth6 -m state --state NEW -p udp -d 10.0.0.131 --dport 1194 -j ACCEPT
+
+iptables -A FORWARD -i eth7 -m state --state NEW -p tcp -d 10.0.0.131 --dport 1194 -j ACCEPT
+iptables -A FORWARD -i eth7 -m state --state NEW -p udp -d 10.0.0.131 --dport 1194 -j ACCEPT
+
+
+
+#All other cases are blocked!
+
+iptables -A FORWARD -i eth6 -j DROP
+iptables -A FORWARD -i eth7 -j DROP
+
 
 
 
