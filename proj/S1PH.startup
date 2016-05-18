@@ -17,6 +17,7 @@ a2ensite intranet.autocar.ttt.conf
 /etc/init.d/snmpd start
 /etc/init.d/ssh start
 /etc/init.d/apache2 start
+/etc/init.d/apache2 restart
 
 chown http:http /home/http
 chown http:http /home/http/.ssh
