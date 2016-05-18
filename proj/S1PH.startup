@@ -4,7 +4,10 @@ ip route add default via 10.0.0.129
 
 #Add private PC's
 ip route add 192.168.0.0/16 via 10.0.0.129
+ip route add 10.0.0.128/25 via 10.0.0.129
 
+#add vpn pc through tunnel
+ip route add 10.0.0.0/24 via 192.168.2.2
 
 useradd http
 echo http:http | chpasswd
