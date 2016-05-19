@@ -12,9 +12,13 @@ ip route add 10.0.0.0/24 via 192.168.2.2
 useradd http
 echo http:http | chpasswd
 
+#https
+a2enmod ssl
+
 #http
 a2ensite autocar.ttt.conf
 a2ensite intranet.autocar.ttt.conf
+
 
 chown http:http /home/http
 chown http:http /home/http/.ssh
@@ -45,4 +49,4 @@ chmod 640 /etc/openvpn/server.conf
 /etc/init.d/snmpd start
 /etc/init.d/ssh start
 /etc/init.d/apache2 start
-
+/etc/init.d/apache2 restart
