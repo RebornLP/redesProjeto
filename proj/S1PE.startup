@@ -1,7 +1,29 @@
-ip addr add dev eth0 10.0.0.130/30 
+ip addr add dev eth0 10.0.0.130/29 
 ip link set dev eth0 up
 ip route add default via 10.0.0.129
 
+useradd email
+echo email:email | chpasswd
+
+
+useradd -m admin
+echo admin:admin | chpasswd
+useradd -m recursoshumanos
+echo recursoshumanos:recursoshumanos | chpasswd
+useradd -m contabilista
+echo contabilista:contabilista | chpasswd
+useradd -m armazem2
+echo armazem2:armazem2 | chpasswd
+useradd -m rececionista2
+echo rececionista2:rececionista2 | chpasswd
+useradd -m armazem3
+echo armazem3:armazem3 | chpasswd
+useradd -m rececionista3
+echo rececionista3:rececionista3 | chpasswd
+useradd -m armazem4
+echo armazem4:armazem4 | chpasswd
+useradd -m rececionista4
+echo rececionista4:rececionista4 | chpasswd
 
 # Change permissions of the mail spool directory, so that the guest user is
 # allowed to write lock files.
@@ -13,4 +35,27 @@ chmod go-rw /etc/exim4/exim4.conf
 /etc/init.d/bind start
 /etc/init.d/snmpd start
 /etc/init.d/exim4 start
+
 /etc/init.d/inetd start
+/etc/init.d/ssh start
+
+chown email:email /home/email
+chown email:email /home/email/.ssh
+chown email:email /home/email/.ssh/*
+
+###############User permissions
+chmod go-rwx /home/email
+chmod 700 /home/email/.ssh
+chmod 600 /home/email/.ssh/*
+
+############root permissions
+chmod go-rwx /root
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/*
+
+#ssh -f -L 000:files@192.168.0.26:3001 -N
+#ssh -f -L 3002:mrtg@192.168.0.27:3003 -N
+
+#ssh -f files@192.168.0.26 -N
+#ssh -f mrtg@192.168.0.27 -N
+

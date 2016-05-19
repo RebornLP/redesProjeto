@@ -9,6 +9,7 @@ $TTL    60000
 
 
 @       	IN  	NS      dns1.autocar.ttt.
+
 dns1       	IN	A   	10.0.0.130
 
 @		IN 	NS	dns2.autocar.ttt.

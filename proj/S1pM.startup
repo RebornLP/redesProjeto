@@ -2,7 +2,8 @@ ip addr add dev eth0 192.168.0.27/29
 ip link set dev eth0 up
 ip route add default via 192.168.0.25
 
-
+useradd mrtg
+echo mrtg:mrtg | chpasswd
 
 #cfgmaker --global "WorkDir:/var/www" private@10.0.0.130 private@192.168.0.26 private@10.0.0.131 private@10.0.0.154 private@10.0.0.150 private@10.0.0.145 private@10.0.0.146 private@192.168.0.27 --output=/root/mrtg.cfg
 env LANG=C mrtg /root/mrtg.cfg --daemon
@@ -13,5 +14,16 @@ indexmaker --title "Network Monitoring" --output /var/www/index.html /root/mrtg.
 /etc/init.d/apache2 start
 /etc/init.d/apache2 status
 
-
+/etc/init.d/ssh start
 /etc/init.d/snmpd start
+
+
+chown mrtg:mrtg /home/mrtg
+chown mrtg:mrtg /home/mrtg/.ssh
+chown mrtg:mrtg /home/mrtg/.ssh/*
+
+
+chmod go-rwx /home/mrtg
+chmod 700 /home/mrtg/.ssh
+chmod 600 /home/mrtg/.ssh/*
+>>>>>>> master
