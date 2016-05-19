@@ -1,6 +1,6 @@
 ip addr add dev eth0 10.0.0.145/30 
 ip link set dev eth0 up
-ip addr add dev eth1 10.0.0.157/30
+ip addr add dev eth1 10.0.0.158/30
 ip link set dev eth1 up
 ip addr add dev eth2 10.0.0.129/29
 ip link set dev eth2 up

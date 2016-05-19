@@ -26,4 +26,3 @@ chown mrtg:mrtg /home/mrtg/.ssh/*
 chmod go-rwx /home/mrtg
 chmod 700 /home/mrtg/.ssh
 chmod 600 /home/mrtg/.ssh/*
->>>>>>> master

@@ -43,7 +43,7 @@ chmod 600 /home/AdminExterno/.ssh/*
 chmod +x /etc/openvpn/update-resolv-conf.sh
 
 #install openresolv
-dpkg -i --force-all openresolv_3.5.2-1_all.deb
+dpkg --install /root/openresolv_3.5.2-1_all.deb
 
 ##
 # openvpn client.conf &
