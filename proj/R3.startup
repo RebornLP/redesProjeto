@@ -8,7 +8,6 @@ ip addr add dev eth3 10.0.0.177/28
 ip link set dev eth3 up
 
 
-
 #echo "
 #subnet 10.0.0.176 netmask 255.255.255.240 {
 #	range 10.0.0.178 10.0.0.190;

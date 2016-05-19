@@ -19,9 +19,11 @@ ip link set dev eth7 up
 # allows Internet
 iptables -t nat -A POSTROUTING -o eth7 -j MASQUERADE
 
-
 #Add S6Ex
 ip route add 10.0.0.4/30 via 10.0.0.2
+
+#Add pc
+ip route add 0.0.0.0/0 via 192.168.1.2
 
 #Add PC6
 ip route add 10.0.0.8/30 via 10.0.0.2
@@ -91,5 +93,4 @@ iptables -A FORWARD -i eth7 -m state --state NEW -p udp -d 10.0.0.131 --dport 11
 
 iptables -A FORWARD -i eth6 -j DROP
 iptables -A FORWARD -i eth7 -j DROP
-
 
