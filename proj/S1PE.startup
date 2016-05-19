@@ -35,6 +35,7 @@ chmod go-rw /etc/exim4/exim4.conf
 /etc/init.d/bind start
 /etc/init.d/snmpd start
 /etc/init.d/exim4 start
+
 /etc/init.d/inetd start
 /etc/init.d/ssh start
 
@@ -55,5 +56,6 @@ chmod 600 /root/.ssh/*
 #ssh -f -L 000:files@192.168.0.26:3001 -N
 #ssh -f -L 3002:mrtg@192.168.0.27:3003 -N
 
-ssh -f files@192.168.0.26 -N
-ssh -f mrtg@192.168.0.27 -N
+#ssh -f files@192.168.0.26 -N
+#ssh -f mrtg@192.168.0.27 -N
+

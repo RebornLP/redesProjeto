@@ -2,6 +2,7 @@ ip addr add dev eth0 192.168.0.26/29
 ip link set dev eth0 up
 ip route add default via 192.168.0.25
 
+
 useradd files
 echo files:files | chpasswd
 
@@ -17,3 +18,4 @@ chown files:files /home/files/.ssh/*
 chmod go-rwx /home/files
 chmod 700 /home/files/.ssh
 chmod 600 /home/files/.ssh/*
+

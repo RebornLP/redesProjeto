@@ -15,6 +15,7 @@
 # Over-rides your full name from Unix password file. Required for PC-Pine.
 personal-name=Contabilista_Sede
 
+
 # Sets domain part of From: and local addresses in outgoing mail.
 user-domain=autocar.ttt
 
@@ -26,7 +27,9 @@ nntp-server=
 
 # Path of (local or remote) INBOX, e.g. ={mail.somewhere.edu}inbox
 # Normal Unix default is the local INBOX (usually /usr/spool/mail/$USER).
+
 inbox-path={imap.autocar.ttt/user=contabilista}inbox
+
 
 # List of folder pairs; the first indicates a folder to archive, and the
 # second indicates the folder read messages in the first should
