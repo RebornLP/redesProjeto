@@ -8,3 +8,5 @@
 #Restart necessario? Sim
 /etc/init.d/networking restart 
 #reboot
+
+/etc/init.d/inetd restart

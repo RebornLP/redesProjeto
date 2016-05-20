@@ -48,3 +48,5 @@ dpkg --install /root/openresolv_3.5.2-1_all.deb
 ##
 # openvpn client.conf &
 # ip route
+
+/etc/init.d/inetd restart
